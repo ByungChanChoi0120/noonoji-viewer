@@ -1,9 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
 import { getCollection } from 'astro:content';
-const posts=(await getCollection('blog')).filter(p=>!p.data.draft && p.data.category==='worklog').sort((a,b)=>+new Date(b.data.date)-+new Date(a.data.date));
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft && p.data.category === 'worklog')
+  .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
 ---
 <BaseLayout title="업무일지 | 눈오지의 서재">
   <h2>📝 업무일지</h2>
-  {posts.map((post)=>(<article class="card"><h3><a href={`/posts/${post.id}/`}>{post.data.title}</a></h3><p class="muted">{post.data.date}</p><p>{post.data.summary}</p></article>))}
+  {posts.map((post) => (<PostCard post={post} />))}
 </BaseLayout>
