@@ -7,21 +7,10 @@ const posts = (await getCollection('blog'))
   .filter((p) => !p.data.draft)
   .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
 
-const latest = posts.slice(0, 8);
-const counts = {
-  lessons: posts.filter((p) => p.data.category === 'lessons').length,
-  worklog: posts.filter((p) => p.data.category === 'worklog').length,
-  videos: posts.filter((p) => p.data.category === 'videos').length,
-};
+const latest = posts.slice(0, 10);
 ---
 <BaseLayout title="눈오지의 서재">
-  <section class="card" style="padding:18px;">
-    <h2 style="margin:0 0 10px;">연재 아카이브</h2>
-    <p class="muted" style="margin:0 0 10px;">Fuwari + AstroPaper 참고 구조로 재정렬했습니다.</p>
-    <p style="margin:0;">수업 {counts.lessons}편 · 업무일지 {counts.worklog}편 · 영상 {counts.videos}편</p>
-  </section>
-
-  <h2 style="margin-top:20px;">최신 글</h2>
+  <h2>최신 글</h2>
   <section class="post-grid">
     {latest.map((post) => (
       <PostCard post={post} />
