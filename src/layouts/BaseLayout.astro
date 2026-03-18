@@ -8,76 +8,81 @@ const { title = '눈오지의 서재' } = Astro.props;
     <title>{title}</title>
     <style>
       :root{
-        --fg:#111827;
-        --muted:#6b7280;
-        --border:#e5e7eb;
-        --card:#ffffff;
-        --brand:#2563eb;
-        --bg:#f8fafc;
+        --bg:#0b1220;
+        --bg-soft:#111a2b;
+        --card:#131f35;
+        --card-2:#1b2a45;
+        --fg:#e5edf9;
+        --muted:#9fb1cc;
+        --line:#294264;
+        --brand:#7dd3fc;
+        --accent:#60a5fa;
       }
       *{box-sizing:border-box}
       body{
         margin:0;
         color:var(--fg);
+        background:
+          radial-gradient(1000px 420px at 90% -10%, #1d4ed8 0%, transparent 60%),
+          radial-gradient(900px 360px at -10% 0%, #0ea5e9 0%, transparent 58%),
+          var(--bg);
         line-height:1.8;
         font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
-        background:
-          radial-gradient(1200px 300px at 50% -15%, #dbeafe 0%, transparent 65%),
-          var(--bg);
       }
       a{color:var(--brand);text-decoration:none}
       a:hover{text-decoration:underline}
       .muted{color:var(--muted);font-size:14px}
-      .container{max-width:1040px;margin:20px auto;padding:0 16px 40px}
+      .container{max-width:1140px;margin:22px auto;padding:0 16px 44px}
 
       .topbar{
-        border:1px solid var(--border);
-        border-radius:18px;
-        background:#fff;
-        box-shadow:0 12px 24px rgba(15,23,42,.05);
+        border:1px solid var(--line);
+        border-radius:20px;
+        background:linear-gradient(180deg,rgba(19,31,53,.94),rgba(17,26,43,.94));
+        box-shadow:0 20px 44px rgba(2,6,23,.36);
         padding:16px;
-        margin-bottom:16px;
+        margin-bottom:18px;
       }
-      .hero-strip{height:140px;border-radius:12px;background:url('/images/noonoji-hero.jpg') center/cover no-repeat;border:1px solid var(--border);margin-bottom:12px}
-      .topbar-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+      .hero-strip{height:170px;border-radius:14px;background:url('/images/noonoji-hero.jpg') center/cover no-repeat;border:1px solid var(--line);margin-bottom:14px}
+      .topbar-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
       .brand-wrap{display:flex;gap:12px;align-items:center}
-      .avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 4px 12px rgba(15,23,42,.15)}
-      .brand{margin:0 0 2px;letter-spacing:-0.02em;font-size:30px}
-      .brand-sub{margin:0}
+      .avatar{width:62px;height:62px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 8px 20px rgba(2,6,23,.45)}
+      .brand{margin:0;font-size:34px;letter-spacing:-0.02em;color:#f8fbff}
+      .brand-sub{margin:2px 0 0}
       .topnav{display:flex;gap:8px;flex-wrap:wrap}
       .pill{
-        border:1px solid #dbeafe;
+        border:1px solid #2f4f75;
         border-radius:999px;
-        padding:7px 12px;
-        background:#eff6ff;
-        color:#1e3a8a;
+        padding:8px 12px;
+        background:#162640;
+        color:#dbeafe;
         font-size:13px;
         font-weight:700;
       }
-      .pill:hover{background:#dbeafe;text-decoration:none}
+      .pill:hover{background:#1f3356;text-decoration:none}
 
       .card{
-        border:1px solid var(--border);
+        border:1px solid var(--line);
         border-radius:16px;
         padding:16px;
-        background:var(--card);
+        background:linear-gradient(180deg,var(--card),var(--card-2));
         margin:12px 0;
-        box-shadow:0 6px 16px rgba(15,23,42,.04);
+        box-shadow:0 10px 26px rgba(2,6,23,.24);
       }
       .post-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-      h1,h2,h3{line-height:1.3}
+      h1,h2,h3{line-height:1.3;color:#f8fbff}
+      h2{margin-top:20px}
 
-      .prose{font-size:17px}
+      .prose{font-size:17px;color:#dbe7f6}
       .prose p{margin:0 0 14px}
       .prose h2{margin:26px 0 10px}
       .prose h3{margin:20px 0 8px}
       .prose ul,.prose ol{margin:8px 0 16px 22px}
-      .prose img{width:100%;height:auto;border-radius:12px;border:1px solid var(--border)}
+      .prose img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
 
       @media (max-width: 760px){
         .topbar-head{flex-direction:column}
         .post-grid{grid-template-columns:1fr}
-        .brand{font-size:26px}
+        .brand{font-size:28px}
       }
     </style>
   </head>

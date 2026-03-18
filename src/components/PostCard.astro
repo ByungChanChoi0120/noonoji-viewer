@@ -1,7 +1,11 @@
 ---
 import CategoryBadge from './CategoryBadge.astro';
 const { post } = Astro.props;
-const tone = post.data.category === 'lessons' ? 'linear-gradient(135deg,#dbeafe,#eff6ff)' : post.data.category === 'videos' ? 'linear-gradient(135deg,#ffedd5,#fff7ed)' : 'linear-gradient(135deg,#dcfce7,#f0fdf4)';
+const tone = post.data.category === 'lessons'
+  ? 'linear-gradient(135deg,#1d4ed8,#1e40af)'
+  : post.data.category === 'videos'
+  ? 'linear-gradient(135deg,#c2410c,#9a3412)'
+  : 'linear-gradient(135deg,#0f766e,#115e59)';
 ---
 <article class="card post-card">
   <div class="thumb" style={`background:${tone}`}></div>
@@ -15,9 +19,10 @@ const tone = post.data.category === 'lessons' ? 'linear-gradient(135deg,#dbeafe,
 
 <style>
 .post-card{margin:0;transition:transform .15s ease, box-shadow .15s ease}
-.post-card:hover{transform:translateY(-2px); box-shadow:0 10px 20px rgba(15,23,42,.06)}
-.thumb{height:118px;border-radius:12px;border:1px solid #e5e7eb;margin-bottom:12px}
+.post-card:hover{transform:translateY(-3px); box-shadow:0 16px 28px rgba(2,6,23,.35)}
+.thumb{height:128px;border-radius:12px;border:1px solid rgba(148,163,184,.25);margin-bottom:12px;position:relative;overflow:hidden}
+.thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.12),transparent 50%)}
 .meta{display:flex;justify-content:space-between;align-items:center;gap:10px}
 h3{margin:10px 0 6px;letter-spacing:-0.01em;font-size:20px}
-p{margin:0;color:#374151}
+p{margin:0;color:#c9d7ea}
 </style>
