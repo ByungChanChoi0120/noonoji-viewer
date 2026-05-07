@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CategoryBadge from '../components/CategoryBadge.astro';
+import AuthorTag from '../components/AuthorTag.astro';
+import { getCollection, render } from 'astro:content';
+
+const posts = await getCollection('blog');
+const post = posts.find((p) => p.id.includes('why-samsung-skhynix-rose'));
+if (!post) {
+  throw new Error('Post not found: why-samsung-skhynix-rose');
+}
+const { Content } = await render(post);
+---
+<BaseLayout title={post.data.title}>
+  <a href="/all" class="muted">← 전체 글로</a>
+
+  <section class="card" style="margin-top:10px;">
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <CategoryBadge category={post.data.category} />
+      <span class="muted">{post.data.date}</span>
+    </div>
+    <h1 style="margin:10px 0 0;">{post.data.title}</h1>
+    {post.data.summary && <p class="muted" style="margin:8px 0 0;">{post.data.summary}</p>}
+    <div style="margin-top:12px;">
+      <AuthorTag author="noonoji" />
+    </div>
+  </section>
+
+  <article class="card prose" style="background:#fff;">
+    <Content />
+  </article>
+</BaseLayout>
